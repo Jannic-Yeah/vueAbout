@@ -1,0 +1,146 @@
+@charset 'UTF-8'
+
+color-main = #111
+color-grey = #999
+color-blue = #00bef7
+border-grey = #e6ecf0
+
+clearfix()
+  &:after
+    clear: both
+  &:after,
+  &:before
+    content: ''
+    display: table
+
+textOverflow()
+  overflow hidden
+  word-wrap normal
+  white-space nowrap
+  text-overflow ellipsis
+
+webkitBoxHorizontal(pack)
+  display flex
+  align-items center
+  justify-content pack
+
+webkitBoxVertical(pack)
+  display flex
+  align-items center
+  justify-content pack
+  flex-direction column
+
+webkitBoxStart()
+  webkitBoxHorizontal(flex-start)
+
+webkitBoxCenter()
+  webkitBoxHorizontal(center)
+
+webkitBoxEnd()
+  webkitBoxHorizontal(flex-end)
+
+webkitBoxJustify()
+  webkitBoxHorizontal(space-between)
+
+webkitBoxVCenter()
+  webkitBoxVertical(center)
+
+webkitBoxVJustify()
+  webkitBoxVertical(space-between)
+
+preHeight(height)
+  height height
+  line-height height
+  
+boxStyle(width, height)
+  width width
+  height height
+  line-height height
+  text-align center
+
+boxSkinStyle(background, radius=0, fontColor=#fff)
+  background background
+  border-radius radius
+  color fontColor
+
+fixBottom()
+  bottom 0
+  position fixed
+
+fixBottomLine(height)
+  width 100%
+  fixBottom()
+  preHeight(height)
+
+fixBottomLineCenter(height)
+  fixBottomLine(height)
+
+fixBottomLineLeft(height)
+  left 0
+  fixBottomLine(height)
+
+autoMaxSize()
+  width 100%
+  height 100%
+
+bgImg(url, width = null, height = null)
+  background url(url) 0 0 no-repeat
+  if width != null and height != null
+    width width
+    height height
+    background-size width height
+
+tagImg(width, height)
+  width width
+  height height
+  display block
+
+absolutePos(top = null, right = null, bottom = null, left = null)
+  position absolute
+  if top != null
+    top top
+  if right != null
+    right right
+  if bottom != null
+    bottom bottom
+  if left != null
+    left left
+
+centerBox(width, height, position = fixed)
+  top 50%
+  left 50%
+  width width
+  height height
+  position position
+  margin-top (-(height/2))
+  margin-left (-(width/2))
+
+fullPage(position = fixed)
+  top 0
+  left 0
+  width 100%
+  height 100%
+  position position
+
+fullPageMask(opacity = 0.5, position = fixed)
+  top 0
+  left 0
+  width 100%
+  height 100%
+  position position
+  background rgba(0, 0, 0, opacity)
+
+bottomPageLayer(position = fixed)
+  left 0
+  right 0
+  bottom 0
+  width 100%
+  height auto
+  position position
+
+fontDpr(size)
+  font-size unit(size * 1, 'PX')
+  [data-dpr="2"] &
+    font-size unit(size * 2, 'PX')
+  [data-dpr="3"] &
+    font-size unit(size * 3, 'PX')
